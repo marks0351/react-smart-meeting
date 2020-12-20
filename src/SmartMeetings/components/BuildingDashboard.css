@@ -1,0 +1,21 @@
+.building-dashboard{
+    display: flex;
+    flex-direction: row;
+}
+
+.building{
+    border: 1px solid red;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 200px;
+    width: 200px;
+    display: flex;
+    margin-right: 20px;
+}
+
+.buildings-count{
+    margin-top: 20px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
