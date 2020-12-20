@@ -10,6 +10,7 @@
     "react-big-calendar": "^0.30.0",
     "react-datepicker": "^3.3.0",
     "react-dom": "16.8.0",
+    "react-redux": "^7.2.2",
     "react-select": "3.1.0",
     "tslib": "^2.0.3"
   },
@@ -22,6 +23,7 @@
   "devDependencies": {
     "@types/react-big-calendar": "^0.24.8",
     "@types/react-datepicker": "^3.1.2",
+    "@types/react-redux": "^7.1.12",
     "@types/react-select": "^3.0.13",
     "react-scripts-ts": "latest",
     "typescript": "^4.1.3"
