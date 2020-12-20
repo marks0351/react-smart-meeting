@@ -1,5 +1,5 @@
 import React from 'react'
-import { SerialisedBuilding } from 'SmartMeetings/serialiser/serialiser';
+import { SerialisedBuilding } from 'SmartMeetings/hooks/useBuildingSerialiser'
 import './BuildingDashboard.css'
 
 interface BuildingProps{

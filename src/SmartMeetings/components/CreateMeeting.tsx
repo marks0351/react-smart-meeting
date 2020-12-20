@@ -1,12 +1,12 @@
 import React, { useReducer } from 'react'
-import { Building, Meeting, MeetingRoom } from 'server/store.interface'
+import { Building, Meeting, MeetingRoom, StoreInterface } from 'SmartMeetings/store/store.interface'
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
 import './BuildingDashboard.css'
 import moment from 'moment';
 import { useMeetingRooms } from 'SmartMeetings/hooks/useMeetingRooms';
 import Select from 'react-select'
-import { createMeeting, getStore } from 'server/SM-backend';
+import { useDispatch, useSelector } from 'react-redux';
 
 interface CreateMeetingProps{
     onCreate: ()=>void
@@ -36,8 +36,10 @@ const createMeetReducer = (state: Partial<Meeting>, action: any)=>{
 
 export const CreateMeeting: React.FC<CreateMeetingProps> = ({onCreate})=>{
     const [meetData, setMeetData] = useReducer(createMeetReducer, initData)
-    const {availableMeetingRooms} = useMeetingRooms(meetData.startTime, meetData.endTime, meetData.buildingId)
-    const buildings = getStore().buildings
+    const store = useSelector((state: StoreInterface) => state)
+    const {availableMeetingRooms} = useMeetingRooms(meetData.startTime, meetData.endTime, store, meetData.buildingId)
+    const dispatch = useDispatch()
+    const buildings = useSelector((state: StoreInterface) => state.buildings)
     const handleChange = (value: any, valueType: keyof Meeting)=>{
         setMeetData({
             type: 'update',
@@ -47,7 +49,10 @@ export const CreateMeeting: React.FC<CreateMeetingProps> = ({onCreate})=>{
     }
 
     const createNewMeeting = ()=>{
-        createMeeting(meetData)
+        dispatch({
+            type: 'CREATE_MEETING',
+            meetingDetails: meetData
+        })
         onCreate()
     }
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import moment from 'moment';
 import { Calendar, momentLocalizer } from 'react-big-calendar'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
-import { Meeting, MeetingRoom } from 'server/store.interface';
+import { Meeting, MeetingRoom } from 'SmartMeetings/store/store.interface';
 
 interface MeetingsCalendarProps{
     meetingRooms: MeetingRoom[]

@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { getStore } from 'server/SM-backend';
-import { serialiseBuildings, SerialisedBuilding } from 'SmartMeetings/serialiser/serialiser';
 import { BuildingComponent } from './BuildingComponent';
 import './BuildingDashboard.css'
-import { Meeting, MeetingRoom } from 'server/store.interface';
+import { Meeting, MeetingRoom, StoreInterface } from 'SmartMeetings/store/store.interface';
 import { MeetingsCalendar } from './MeetingsCalendar';
+import { useSelector } from 'react-redux';
+import { SerialisedBuilding, useBuildingSerialiser } from 'SmartMeetings/hooks/useBuildingSerialiser';
 
 export const BuildingsDashboard: React.FC<any> = ()=>{
     const [buildings, setBuildings] = useState<SerialisedBuilding[]>([])
     const [meetings, setMeetings] = useState<Meeting[]>([])
     const [meetingRooms, setMeetingRooms] = useState<MeetingRoom[]>([])
+    const store = useSelector((state: StoreInterface) => state)
 
     useEffect(()=>{
-        const store = getStore()
-        const serialisedBuildings = serialiseBuildings(store.buildings)
+        const serialisedBuildings = useBuildingSerialiser(store.buildings, store)
         setBuildings(serialisedBuildings)
         setMeetings(store.meetings)
         setMeetingRooms(store.meetingRooms)
-    }, [])
+    }, [store])
     return <div className='dashboard-wrapper'>
         <div className='buildings-wrapper'>
             <div className='buildings-count'>Total number of Buildings: {buildings.length}</div>

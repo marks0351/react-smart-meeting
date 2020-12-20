@@ -1,9 +1,7 @@
-import { getStore } from "server/SM-backend";
-import { MeetingRoom } from "server/store.interface";
+import { MeetingRoom, StoreInterface } from "SmartMeetings/store/store.interface";
 import { getTimeFromDate, timeInRange } from "SmartMeetings/utils/date.utils";
 
-export const useMeetingRooms = (startDate: string | undefined, endDate: string | undefined, buildingId?: number)=>{
-    const store = getStore()
+export const useMeetingRooms = (startDate: string | undefined, endDate: string | undefined,store: StoreInterface, buildingId?: number)=>{
     const meetingsStore = store.meetings
     const allMeetings = buildingId ? meetingsStore.filter( each => each.buildingId === buildingId): meetingsStore
     const meetingsInThatTime = startDate && endDate ? allMeetings.filter((eachMeeting)=>{
