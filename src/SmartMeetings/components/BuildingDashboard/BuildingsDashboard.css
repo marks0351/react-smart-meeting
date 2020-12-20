@@ -1,0 +1,19 @@
+.building-dashboard{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+.buildings-wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+.buildings-count{
+    margin-top: 20px;
+    display: flex;
+    margin-left: 10px;
+}
+
+.dashboard-wrapper{
+    display: flex;
+}

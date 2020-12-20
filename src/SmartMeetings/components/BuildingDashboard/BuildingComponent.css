@@ -1,0 +1,16 @@
+.building{
+    border: 1px solid #3174ad;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 250px;
+    width: 250px;
+    display: flex;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    padding: 10px;
+    transition: box-shadow 0.3s ease-in-out;
+    background-color: #eaf6ff;
+}
+.building:hover{
+    box-shadow: 8px 12px 5px 0px rgba(0,0,0,0.75);
+}

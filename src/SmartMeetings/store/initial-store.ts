@@ -34,15 +34,7 @@ const meetingRooms: MeetingRoom[] = [{
     buildingId: 3,
 }]
 
-const meetings: Meeting[] = [{
-    id: 1,
-    startTime: new Date(new Date().setHours(19,0,0,0)).toISOString(),
-    endTime: new Date(new Date().setHours(20,0,0,0)).toISOString(),
-    title: 'First Meeting',
-    description: 'Meeting to have some fun',
-    meetingRoomId: 1,
-    buildingId: 1
-}]
+const meetings: Meeting[] = []
 
 export default {
     buildings,

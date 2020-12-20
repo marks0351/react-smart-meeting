@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Dashboard } from 'SmartMeetings/components/Dashboard';
+import './App.css'
 
 export const App: React.FC<any> =  ({ name }: any) => {
     const dispatch = useDispatch()

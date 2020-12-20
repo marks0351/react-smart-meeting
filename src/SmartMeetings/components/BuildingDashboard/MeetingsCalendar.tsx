@@ -39,5 +39,6 @@ export const MeetingsCalendar: React.FC<MeetingsCalendarProps> = ({meetingRooms,
     resources={resourceMap}
     resourceIdAccessor="resourceId"
     resourceTitleAccessor="resourceTitle"
+    showMultiDayTimes={true}
 />
 }

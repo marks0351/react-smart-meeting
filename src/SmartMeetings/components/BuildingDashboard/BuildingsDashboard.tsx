@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { BuildingComponent } from './BuildingComponent';
-import './BuildingDashboard.css'
+import './BuildingsDashboard.css'
 import { Meeting, MeetingRoom, StoreInterface } from 'SmartMeetings/store/store.interface';
 import { MeetingsCalendar } from './MeetingsCalendar';
 import { useSelector } from 'react-redux';
@@ -28,6 +28,5 @@ export const BuildingsDashboard: React.FC<any> = ()=>{
             </div>
         </div>
         <MeetingsCalendar meetingRooms={meetingRooms} meetings={meetings}></MeetingsCalendar>
-
     </div>
 }

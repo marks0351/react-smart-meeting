@@ -20,7 +20,7 @@ export const useBuildingSerialiser = (buidlings: Building[], store: StoreInterfa
     
     const computeMeetingsToHappenNow = (meetings: Meeting[])=>{
         const filteredMeetings = meetings.filter((eachMeeting)=>{
-            return timeInRange(getTimeFromDate(eachMeeting.startTime), getTimeFromDate(eachMeeting.endTime), getTimeFromDate(new Date().toISOString()))
+            return timeInRange(getTimeFromDate(new Date().toISOString()), getTimeFromDate(eachMeeting.startTime), getTimeFromDate(eachMeeting.endTime))
         })
         return filteredMeetings.length
     }
