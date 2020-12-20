@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import Hello from './Hello';
-import './style.css';
+// import './style.css';
 
 interface AppProps { }
 interface AppState {
@@ -9,10 +9,10 @@ interface AppState {
 }
 
 class App extends Component<AppProps, AppState> {
-  constructor(props) {
+  constructor(props: any) {
     super(props);
     this.state = {
-      name: 'React'
+      name: 'Angular'
     };
   }
 
