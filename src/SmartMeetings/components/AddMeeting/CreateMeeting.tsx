@@ -88,6 +88,11 @@ export const CreateMeeting: React.FC<CreateMeetingProps> = ({onCreate})=>{
             handleChange(null, 'endTime')
         }
     }
+
+    const onBuildingChange = (selection: Building)=>{
+        handleChange(selection.id, 'buildingId')
+        handleChange(null, 'meetingRoomId')
+    }
     return <div className='create-meeting-modal'>
         <div className='modal-content'>
             <form>
@@ -124,10 +129,11 @@ export const CreateMeeting: React.FC<CreateMeetingProps> = ({onCreate})=>{
                     <div>
                         Building: 
                         <Select
+                            value={buildings.find(each => each.id === meetData.buildingId) || null}
                             className='custom-select'
                             isDisabled={!(!!meetData.startTime && !!meetData.endTime && meetData.startTime !== meetData.endTime)}
                             formatOptionLabel={(option)=> option.name}
-                            onChange={(selection: Building)=>handleChange(selection.id, 'buildingId')}
+                            onChange={onBuildingChange}
                             options={buildings}
                         />
                     </div>
@@ -135,6 +141,7 @@ export const CreateMeeting: React.FC<CreateMeetingProps> = ({onCreate})=>{
                         Available Meeting Rooms: 
                         <Select
                             className='custom-select'
+                            value={availableMeetingRooms.find(each => each.id === meetData.meetingRoomId) || null}
                             isDisabled={!(!!meetData.startTime && !!meetData.endTime && meetData.startTime !== meetData.endTime)}
                             formatOptionLabel={(option)=> `${option.name} (Floor: ${option.floorNumber})`}
                             onChange={(selection: MeetingRoom)=>onMeetingRoomChange(selection)}
