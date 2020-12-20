@@ -5,7 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import './CreateMeeting.css'
 import moment from 'moment';
 import { useMeetingRooms } from 'SmartMeetings/hooks/useMeetingRooms';
-import Select from 'react-select'
+import Select from 'react-select';
 import { useDispatch, useSelector } from 'react-redux';
 
 interface CreateMeetingProps{
@@ -136,7 +136,7 @@ export const CreateMeeting: React.FC<CreateMeetingProps> = ({onCreate})=>{
                         <Select
                             className='custom-select'
                             isDisabled={!(!!meetData.startTime && !!meetData.endTime && meetData.startTime !== meetData.endTime)}
-                            formatOptionLabel={(option)=> option.name}
+                            formatOptionLabel={(option)=> `${option.name} (Floor: ${option.floorNumber})`}
                             onChange={(selection: MeetingRoom)=>onMeetingRoomChange(selection)}
                             options={availableMeetingRooms}
                         />

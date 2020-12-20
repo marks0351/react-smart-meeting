@@ -20,6 +20,7 @@ export interface MeetingRoom{
     id: number,
     name: string
     buildingId: number
+    floorNumber: number
 }
 
 export interface Meeting{

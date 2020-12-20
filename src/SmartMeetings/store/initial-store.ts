@@ -16,22 +16,27 @@ const meetingRooms: MeetingRoom[] = [{
     id: 1,
     name: 'Chicago',
     buildingId: 1,
+    floorNumber: 3
 },{
     id: 2,
     name: 'New York',
     buildingId: 1,
+    floorNumber: 2
 },{
     id: 3,
     name: 'London',
     buildingId: 2,
+    floorNumber: 1
 },{
     id: 4,
     name: 'Amsterdam',
     buildingId: 2,
+    floorNumber: 1
 },{
     id: 5,
     name: 'Beijing',
     buildingId: 3,
+    floorNumber: 2
 }]
 
 const meetings: Meeting[] = []
