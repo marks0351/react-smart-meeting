@@ -6,7 +6,7 @@ export const AddMeeting: React.FC<any> = ()=>{
     const [createMode, setCreateMode] = useState(false)
     return <>
         <div className='add-button-wrapper'>
-            {!createMode && <button onClick={()=> setCreateMode(true)}>Add New Meeting</button>}
+            {!createMode && <button onClick={()=> setCreateMode(true)}>+ Create New Meeting</button>}
         </div>
         {createMode && <>
             <CreateMeeting onCreate={()=>setCreateMode(false)}></CreateMeeting>
