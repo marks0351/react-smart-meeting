@@ -1,4 +1,4 @@
-import { server } from "server/SM-backend";
+import { getStore } from "server/SM-backend";
 import { Building, Meeting, MeetingRoom } from "server/store.interface";
 import { getTimeFromDate, timeInRange } from "SmartMeetings/utils/date.utils";
 
@@ -6,15 +6,23 @@ export interface SerialisedBuilding extends Building{
     numberOfMeetings: number,
     meetingsToHappenToday: number
     meetingRooms: MeetingRoom[]
+    meetingsHappeningNow: number
 }
 
-const store = server.getStore()
+const store = getStore()
 
 const getMeetings = (buildingId: number) =>{
     const meetings = store.meetings
     return meetings.filter((eachMeeting)=>{
         return eachMeeting.buildingId === buildingId
     })
+}
+
+const computeMeetingsToHappenNow = (meetings: Meeting[])=>{
+    const filteredMeetings = meetings.filter((eachMeeting)=>{
+        return timeInRange(getTimeFromDate(eachMeeting.startTime), getTimeFromDate(eachMeeting.endTime), getTimeFromDate(new Date().toISOString()))
+    })
+    return filteredMeetings.length
 }
 
 const computeMeetingsToHappenToday = (meetings: Meeting[])=>{
@@ -37,9 +45,10 @@ const getMeetingRoomsOfBuilding = (buildingId: number)=>{
 const serialiseBuilding = (buidling: Building): SerialisedBuilding=>{
     const meetingRooms = getMeetingRoomsOfBuilding(buidling.id)
     const meetings = getMeetings(buidling.id)
-    let numberOfMeetings = meetings.length;
-    let meetingsToHappenToday = computeMeetingsToHappenToday(meetings);
-    return {...buidling, numberOfMeetings,meetingRooms, meetingsToHappenToday}
+    const numberOfMeetings = meetings.length;
+    const meetingsToHappenToday = computeMeetingsToHappenToday(meetings);
+    const meetingsHappeningNow = computeMeetingsToHappenNow(meetings);
+    return {...buidling, numberOfMeetings,meetingRooms, meetingsToHappenToday, meetingsHappeningNow}
 }
 
 export const serialiseBuildings = (buidlings: Building[]): SerialisedBuilding[]=> {

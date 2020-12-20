@@ -10,8 +10,10 @@ export const BuildingComponent: React.FC<BuildingProps> = ({store})=>{
     return <>
         <div className='building'>
             <div className='building-name'> Building: {store.name}</div>
-            <div className='building-name'> Meeting Rooms Free: {store.numberOfMeetings}</div>
+            <div className='building-name'> Total Meeting Rooms: {store.meetingRooms.length}</div>
+            <div className='building-name'> Meetings Today: {store.numberOfMeetings}</div>
             <div className='building-name'> Meetings To Happen: {store.meetingsToHappenToday}</div>
+            <div className='building-name'> Meetings Happening Now: {store.meetingsHappeningNow}</div>
         </div>
     </>
 }

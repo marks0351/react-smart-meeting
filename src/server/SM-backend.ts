@@ -5,18 +5,28 @@ const defaultState: StoreInterface = initialStore
 
 const storeKey = 'smartMeeting'
 
-export const server = {
-    initServer: ()=>{
-        const syncedState = localStorage.getItem(storeKey)
-        if(!syncedState){
-            localStorage.setItem(storeKey, JSON.stringify(defaultState))
-        }
-    },
-    getStore : (): StoreInterface=>{
-        const syncedState = localStorage.getItem(storeKey)
-        return syncedState ? JSON.parse(syncedState) : defaultState
-    },
-    syncStore : (updatedStore: any)=>{
-        localStorage.setItem(storeKey, JSON.stringify(updatedStore))
+export const initServer = ()=>{
+    const syncedState = localStorage.getItem(storeKey)
+    if(!syncedState){
+        localStorage.setItem(storeKey, JSON.stringify(defaultState))
     }
+}
+export const getStore  = (): StoreInterface=>{
+    const syncedState = localStorage.getItem(storeKey)
+    return syncedState ? JSON.parse(syncedState) : defaultState
+}
+export const syncStore  = (updatedStore: any)=>{
+    localStorage.setItem(storeKey, JSON.stringify(updatedStore))
+}
+export const createMeeting = (meetingDetails: any) =>{
+    const currentStore = getStore()
+     const newMeeting = {
+         id: new Date().getTime(),
+         ...meetingDetails
+     }
+     const updateStore: StoreInterface = {
+         ...currentStore,
+        meetings: [...currentStore.meetings, newMeeting]
+     }
+     syncStore(updateStore) 
 }

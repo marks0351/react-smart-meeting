@@ -7,7 +7,7 @@ const buildings: Building[] = [{
     id: 2,
     name: 'EDC - Europe',
 },{
-    id: 2,
+    id: 3,
     name: 'EDC - Asia',
 }]
 
@@ -36,8 +36,8 @@ const meetingRooms: MeetingRoom[] = [{
 
 const meetings: Meeting[] = [{
     id: 1,
-    startTime: new Date(new Date().setHours(18,59,59,999)).toISOString(),
-    endTime: new Date(new Date().setHours(19,59,59,999)).toISOString(),
+    startTime: new Date(new Date().setHours(19,0,0,0)).toISOString(),
+    endTime: new Date(new Date().setHours(20,0,0,0)).toISOString(),
     title: 'First Meeting',
     description: 'Meeting to have some fun',
     meetingRoomId: 1,

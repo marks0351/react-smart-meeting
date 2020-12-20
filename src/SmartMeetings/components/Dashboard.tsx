@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
-import { server } from 'server/SM-backend';
+import { initServer } from 'server/SM-backend';
+import { AddMeeting } from './AddMeeting';
 import { BuildingsDashboard } from './BuildingsDashboard';
 
 export const Dashboard: React.FC<any> = ()=>{
     useEffect(()=>{
-        server.initServer()
+        initServer()
     }, [])
     return <>
         <BuildingsDashboard></BuildingsDashboard>
+        <AddMeeting></AddMeeting>
     </>
 }

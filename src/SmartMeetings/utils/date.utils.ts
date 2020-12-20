@@ -10,5 +10,5 @@ export const timeInRange = (inputTime: string, start: string, end: string, forma
     const time = moment(inputTime,format),
     beforeTime = moment(start, format),
     afterTime = moment(end, format);
-    return time.isBetween(beforeTime, afterTime)
+    return time.isBetween(beforeTime, afterTime) || time.isSame(beforeTime) || time.isSame(afterTime)
 }
